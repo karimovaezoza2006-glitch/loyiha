@@ -13,7 +13,7 @@ interface AxiosType{
 export const useAxios = () => {
     const request = ({url, method="GET", body, param}: AxiosType)=>{
         return axios({
-            url: `${import.meta.env}/${url}`,
+            url: `${import.meta.env.VITE.BASE_URL}/${url}`,
             method,
             headers:{
                 "Content--Type":"application/json"
@@ -24,7 +24,7 @@ export const useAxios = () => {
                 ...param
             }
         }).then(res=>res.data.data).catch((error)=>{
-          console.log(error)
+          throw  error;
 
         })
 
