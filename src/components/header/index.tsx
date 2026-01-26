@@ -30,13 +30,13 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-5">
           <Link
             to={"/"}
-            className={`${pathname === "/" && "text-[#46A358] font-bold"} font-normal text-[16px] text-[#3d3d3d] hover:text-[#46A358] transition-colors`}
+            className={`${pathname === "/" && "text-[#46A358] font-bold"} text-[16px] text-[#3d3d3d] hover:text-[#46A358] transition-colors`}
           >
             Home
           </Link>
           <Link
             to={"/blog"}
-            className={`${pathname === "/blog" && "text-[#46A358] font-bold"} font-normal text-[16px] text-[#3d3d3d] hover:text-[#46A358] transition-colors`}
+            className={`${pathname === "/blog" && "text-[#46A358] font-bold"}  text-[16px] text-[#3d3d3d] hover:text-[#46A358] transition-colors`}
           >
             Blog
           </Link>

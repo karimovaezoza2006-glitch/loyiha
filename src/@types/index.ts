@@ -55,3 +55,27 @@ export interface LoginValues {
   password: string;
 }
 
+export interface HeroMockType{
+id:number;
+title: string;
+subTitle: string;
+description: string;
+buttonText: string;
+big_img_url: string;
+small_img_url: string;
+}
+
+export  interface CategoryType{
+  count: number;
+  created_at: string;
+  created_by:string;
+  route_path:string;
+  title:string;
+  _id:string;
+}
+
+export interface QueryType<T>{
+  isLoading: boolean;
+  isError: boolean;
+  data?:T;
+}

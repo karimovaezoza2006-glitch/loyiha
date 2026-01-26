@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
 import ProviderConf from './router/provider-conf'
+import "aos/dist/aos.css";
 
 
 createRoot(document.getElementById('root')!).render(

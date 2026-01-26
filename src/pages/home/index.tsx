@@ -1,20 +1,29 @@
-// import Header from "../../components/header/Header";
-// import PlantPromoSection from "../PlantPromoCard";
-// import ShopPage from "../ShopPage";
-// import Showcase from "../Showcase";
 
-import ShopPage from "./ShopPage";
+// import ShopPage from "./ShopPage";
 import PlantPromoSection from "./PlantPromoCard";
 import Header from "../../components/header/index"
-import Showcase from "./Showcase";
+// import Showcase from "./Showcase";
+import Footer from "../../components/footer/index"
+import NewsletterSection from "./NewsletterSection";
+import BlogPostsSection from "./BlogPostsSection";
+import Hero from "../../components/hero";
+import Dashboard from "../../components/dashboard";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <Showcase />
-      <ShopPage />
+      <div className="w-[90%] m-auto ">
+        <Hero/>
+        <Dashboard/>
+      </div>
+      
+      {/* <Showcase /> */}
+      {/* <ShopPage /> */}
+      <BlogPostsSection/>
       <PlantPromoSection />
+      <NewsletterSection/>
+      <Footer/>
     </div>
   );
 };

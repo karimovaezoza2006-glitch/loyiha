@@ -7,6 +7,7 @@ import { setAuthorizationModalVisibility } from "../../../redux/modal-store";
 import { useAxios } from "../../useAxios";
 import { useReduxDispatch } from "../../useRedux";
 import { getUser } from "../../../redux/user-slice";
+import { signInWithGoogle } from "../../../config/config";
 // import { getUser } from "../../../redux/user-slice";
 
 export const useLoginMutation = () => {
@@ -60,7 +61,29 @@ export const useRegisterMutation = () => {
 };
 
 export const useOnAuthGoogle = () => {
+  const notify = notificationApi();
+  const dispatch = useReduxDispatch();
+    const axios = useAxios();
   return useMutation({
-    
+    mutationKey : ["sign-google"],
+    mutationFn :async() =>{
+      const response = await signInWithGoogle()
+      console.log(response);
+      return axios({ url: "user/sign-in/google", method: "POST", body:{email:response.user.email}})
+    },
+    onSuccess(data){
+          notify("login");
+      const { token, user } = data;
+      Cookies.set("token", token);
+      Cookies.set("user", JSON.stringify(user));
+      dispatch(getUser(user));
+      dispatch(setAuthorizationModalVisibility());
+    },
+    onError(error: {status: number}){
+      if(error.status=== 409){
+         return notify("409")
+      }
+      notify("error")
+    }
   })
 }

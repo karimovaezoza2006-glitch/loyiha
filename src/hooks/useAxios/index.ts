@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 
 
 interface AxiosType{
@@ -16,7 +16,8 @@ export const useAxios = () => {
             url: `${import.meta.env.VITE.BASE_URL}/${url}`,
             method,
             headers:{
-                "Content--Type":"application/json"
+                "Content--Type":"application/json",
+                Authorization: `Bearar ${Cookies.get("token")}`
             },
             data:body,
             params:{
