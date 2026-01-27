@@ -13,7 +13,7 @@ interface AxiosType{
 export const useAxios = () => {
     const request = ({url, method="GET", body, param}: AxiosType)=>{
         return axios({
-            url: `${import.meta.env.VITE.BASE_URL}/${url}`,
+            url: `${import.meta.env.VITE_BASE_URL}/${url}`,
             method,
             headers:{
                 "Content--Type":"application/json",
@@ -21,7 +21,7 @@ export const useAxios = () => {
             },
             data:body,
             params:{
-                access_token:"64eecf3b54abde61153d1fd3   ",
+                access_token:"64eecf3b54abde61153d1fd3",
                 ...param
             }
         }).then(res=>res.data.data).catch((error)=>{
@@ -32,3 +32,8 @@ export const useAxios = () => {
     };
     return request
 }
+
+
+// https://beckend-n14-soqt.vercel.app/api/flower/category?access_token=64bebc1e2c6d3f056a8c85b7
+
+// https://backend-n14-soqt.vercel.app/api/flower/category?access_token=64eecf3b54abde61153d1fd3
