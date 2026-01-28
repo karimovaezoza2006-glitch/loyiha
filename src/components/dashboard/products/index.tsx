@@ -3,7 +3,7 @@ import type { ProductType, QueryType } from "../../../@types";
 import { useQueryHandler } from "../../../hooks/useQuery"
 
 const Products = () => {
-  const {data, isLoading, isError} : QueryType<ProductType[]>= 
+  const {data} : QueryType<ProductType[]>= 
   useQueryHandler({
     url: "flower/category/house-plants", 
     pathname:"products",
