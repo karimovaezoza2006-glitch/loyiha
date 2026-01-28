@@ -1,4 +1,5 @@
-import type { ProductsTitleType } from "../@types/AuthType";
+import type { ProductsTitleType } from "../@types";
+
 
 export const products_title: ProductsTitleType[] = [
   {

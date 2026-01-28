@@ -5,7 +5,7 @@ interface InitialStateType{
 }
 
 const initialState : InitialStateType = {
-    authorizationModalVisibility : true,
+    authorizationModalVisibility : false,
 }
 
 

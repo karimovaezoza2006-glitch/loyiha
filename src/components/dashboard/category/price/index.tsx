@@ -7,6 +7,7 @@ const Price = () => {
     const changeSlider = (e:any) =>{
         setSlider(e)
     }
+    console.log(slider)
   return (
     <div className="mt-5">
         <h3 className="text-[#3d3d3d] font-bold">Price Range</h3>
