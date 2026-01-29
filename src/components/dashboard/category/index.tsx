@@ -22,7 +22,7 @@ const {categoryLoader} =LoaderApi();
                 <h3>({value.count})</h3>
             </div>
            ) )}
-            {/* {categoryLoader()} */}
+            
         </div>
         <Price/>
         <Discount/>
