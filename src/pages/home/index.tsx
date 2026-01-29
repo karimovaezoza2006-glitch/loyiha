@@ -1,6 +1,6 @@
 
 // import ShopPage from "./ShopPage";
-import PlantPromoSection from "./PlantPromoCard";
+
 import Header from "../../components/header/index"
 // import Showcase from "./Showcase";
 import Footer from "../../components/footer/index"
@@ -8,6 +8,7 @@ import NewsletterSection from "./NewsletterSection";
 import BlogPostsSection from "./BlogPostsSection";
 import Hero from "../../components/hero";
 import Dashboard from "../../components/dashboard";
+import PlantPromoSection from "./PlantCard";
 
 const Home = () => {
   return (
