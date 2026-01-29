@@ -14,7 +14,7 @@ const Card: FC<ProductType> = (props) =>{
           <img 
            src={props.main_image}
            alt="flower"
-           className='w-4/5 max-sm:h-[100%]'
+           className='w-4/5 max-sm:h-[100%] '
            />
            <div className='hidden gap-3 justify-center inset-x-auto absolute bottom-[20px] items-center group-hover:flex'>
             <div className={`${icon_style}`}>
