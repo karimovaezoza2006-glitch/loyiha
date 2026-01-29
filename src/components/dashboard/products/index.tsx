@@ -1,16 +1,16 @@
-import { Card } from "antd";
+import Card from "./card";
 import type { ProductType, QueryType } from "../../../@types";
 import { useQueryHandler } from "../../../hooks/useQuery"
 
 const Products = () => {
-  const {data} : QueryType<ProductType[]>= 
+  const {data, } : QueryType<ProductType[]>= 
   useQueryHandler({
     url: "flower/category/house-plants", 
     pathname:"products",
   });
 
 
-  // console.log(data)
+  console.log(data)
   return (
     <div>
   <div className="grid grid-cols-3 gap-5">

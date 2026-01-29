@@ -86,26 +86,27 @@ export interface DiscountFlowerType {
   title: string;
 }
 export interface ProductType {
-    _id: string;
-    title: string;
-    price: number;
-    main_image: string;
-    discount: boolean;
-    discount_price?: number;
-    short_description: string;
-    description: string;
-    category: string;
-    detail_image: string[];
-    rate: number;
-    views: string;
-    tags: [];
-    comments: [];
-    sold_times: number;
-    count?: number | undefined;
-    userPrice?: number;
-    created_at: string;
-    created_by: string;
+  _id: string;
+  title: string;
+  price: number;
+  main_image: string;
+  discount: boolean;
+  discount_price?: number;
+  short_description: string;
+  description: string;
+  detailed_images: string[];
+  rate: number;
+  views: number;
+  tags: [];
+  comments: [];
+  sold_items: number;
+  created_by: string;
+  created_at: string;
+  category: string;
+  count?: number | undefined;
+  userPrice?: number;
 }
+
 export interface ShopCartType extends ProductType {
     counter: number;
     userPrice: number;
