@@ -9,10 +9,16 @@ import Price from "./price";
 const Category = () => {
     const{setParam, getParam} = useSearchParamsHandler()
     let category = getParam("category") || "house-plants";
-    const {data, isLoading, isError} :QueryType<CategoryType[]> = useQueryHandler({
+    let range_max = getParam("range_max") || 1000;
+    let range_min = getParam("range_min") || 0;
+  
+
+
+    const {data, isLoading, isError} :QueryType<CategoryType[]> =
+     useQueryHandler({
         url: "flower/category",
          pathname:"category"
-
+      
     });
 const {categoryLoader} =LoaderApi();
   return (
@@ -24,7 +30,7 @@ const {categoryLoader} =LoaderApi();
             :data?.map((value)=>
                 (
                 <div
-                onClick={()=>setParam({category: value.route_path})}
+                onClick={()=>setParam({category: value.route_path, range_min, range_max})}
                 key={value._id} className={`flex items-center justify-between hover:text-main cursor-pointer text-[#3d3d3d] font-medium
                 ${category === value.route_path && "text-main"  }`}>
                 <h3>{value.title}</h3>

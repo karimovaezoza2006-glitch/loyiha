@@ -7,7 +7,17 @@ const LoaderApi = () => {
          
         ));
     }
-  return{categoryLoader}
+
+    const productLoader = () =>{
+        return Array.from({ length:6}).map((_, index) => (
+        <div key={index} className="flex flex-col gap-2">
+            <Skeleton.Image active style={{height: 280, width:"100%"}}/>
+            <Skeleton.Input active  />
+        
+        </div>
+        ));
+    };
+  return{categoryLoader, productLoader}
 }
 
 export {LoaderApi}
