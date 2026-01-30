@@ -5,7 +5,9 @@ import { useSearchParamsHandler } from "../../../../hooks/paramsApi";
 const Price = () => {
   const [slider, setSlider] = useState<number[]>([0, 1000]);
 const {setParam, getParam}= useSearchParamsHandler()
+  let type = getParam("type") || "all-plants";
 let category = getParam("category") || "house-plants";
+  let sort = getParam("sort") || "default-sorting";
   const changeSlider = (value: number[] | number) => {
 
     if (Array.isArray(value)) {
@@ -32,7 +34,14 @@ let category = getParam("category") || "house-plants";
         </span>
 
       </div>
-      <button onClick={()=> setParam({category, range_min: slider[0], range_max: slider[1]})}
+      <button onClick={()=> 
+      setParam({
+        category,
+         range_min: slider[0], 
+         range_max: slider[1], 
+         type,
+        sort,
+      })}
        className="bg-[#46a358] rounded-lg font-medium text-[#fff] p-[7px_25px] w-full cursor-pointer">Filter</button>
     </div>
   );

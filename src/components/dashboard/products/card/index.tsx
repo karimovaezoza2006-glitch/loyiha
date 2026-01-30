@@ -27,7 +27,7 @@ const Card: FC<ProductType> = (props) => {
         data-aos="fade-up"
         className="relative bg-white hover:shadow-xl transition-all duration-300"
       >
-        <div className="group h-[300px] bg-[#F5F5F5] flex justify-center items-center relative overflow-hidden">
+        <div className="group h-[300px]  flex justify-center items-center relative overflow-hidden">
           <img
             src={props.main_image}
             alt={props.title}
@@ -68,7 +68,7 @@ const Card: FC<ProductType> = (props) => {
 
         {props.discount && (
           <span className="absolute top-4 left-0 bg-[#46A358] text-white px-2 py-1 text-[12px] font-bold">
-            SALE
+            13 % OFF
           </span>
         )}
       </div>

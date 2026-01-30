@@ -11,8 +11,8 @@ const Category = () => {
     let category = getParam("category") || "house-plants";
     let range_max = getParam("range_max") || 1000;
     let range_min = getParam("range_min") || 0;
-  
-
+    let sort = getParam("sort") || "default-sorting";
+   let type = getParam("type") || "all-plants";
 
     const {data, isLoading, isError} :QueryType<CategoryType[]> =
      useQueryHandler({
@@ -30,7 +30,7 @@ const {categoryLoader} =LoaderApi();
             :data?.map((value)=>
                 (
                 <div
-                onClick={()=>setParam({category: value.route_path, range_min, range_max})}
+                onClick={()=>setParam({category: value.route_path, range_min, range_max, type, sort})}
                 key={value._id} className={`flex items-center justify-between hover:text-main cursor-pointer text-[#3d3d3d] font-medium
                 ${category === value.route_path && "text-main"  }`}>
                 <h3>{value.title}</h3>

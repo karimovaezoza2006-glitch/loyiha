@@ -12,13 +12,17 @@ const Products = () => {
   let category = getParam("category") || "house-plants";
   let range_max = getParam("range_max") || 1000;
   let range_min = getParam("range_min") || 0;
+    let type = getParam("type") || "all-plants";
+      let sort = getParam("sort") || "default-sorting";
   const {data,isLoading, isError } : QueryType<ProductType[]>= 
   useQueryHandler({
     url: `flower/category/${category}`, 
-    pathname:`products-${category}-${range_min}-${range_max}`,
+    pathname:`products-${category}-${range_min}-${range_max}-${type}-${sort}`,
     param:{
       range_min, 
-      range_max
+      range_max, 
+      type,
+      sort,
     }
  
   });
@@ -26,7 +30,7 @@ const Products = () => {
 const {productLoader} = LoaderApi()
 
   return (
-    <div>
+    <div >
       <ProductsTitle />
   <div className="grid grid-cols-3 gap-5">
    {isLoading || isError 
