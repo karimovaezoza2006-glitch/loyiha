@@ -8,11 +8,11 @@ import Price from "./price";
 
 const Category = () => {
     const{setParam, getParam} = useSearchParamsHandler()
-    let category = getParam("category") || "house-plants";
-    let range_max = getParam("range_max") || 1000;
-    let range_min = getParam("range_min") || 0;
-    let sort = getParam("sort") || "default-sorting";
-   let type = getParam("type") || "all-plants";
+    const  category = getParam("category") || "house-plants";
+    const range_max = getParam("range_max") || 1000;
+    const  range_min = getParam("range_min") || 0;
+    const sort = getParam("sort") || "default-sorting";
+   const type = getParam("type") || "all-plants";
 
     const {data, isLoading, isError} :QueryType<CategoryType[]> =
      useQueryHandler({

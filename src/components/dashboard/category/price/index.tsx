@@ -5,9 +5,9 @@ import { useSearchParamsHandler } from "../../../../hooks/paramsApi";
 const Price = () => {
   const [slider, setSlider] = useState<number[]>([0, 1000]);
 const {setParam, getParam}= useSearchParamsHandler()
-  let type = getParam("type") || "all-plants";
-let category = getParam("category") || "house-plants";
-  let sort = getParam("sort") || "default-sorting";
+  const type = getParam("type") || "all-plants";
+const category = getParam("category") || "house-plants";
+  const sort = getParam("sort") || "default-sorting";
   const changeSlider = (value: number[] | number) => {
 
     if (Array.isArray(value)) {

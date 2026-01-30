@@ -116,3 +116,7 @@ export interface ProductsTitleType {
   title: string;
   route_path: string;
 }
+export interface ShopCartType extends ProductType {
+  counter: number;
+  userPrice: number;
+}
