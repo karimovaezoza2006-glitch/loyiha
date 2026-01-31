@@ -27,12 +27,12 @@ const Card: FC<ProductType> = (props) => {
 
   return (
     <>
-      {/* PRODUCT CARD */}
+ 
       <div
         data-aos="fade-up"
         className="relative bg-white hover:shadow-xl transition-all duration-300"
       >
-        {/* IMAGE */}
+       
         <div className="group h-[300px] flex items-center justify-center relative overflow-hidden">
           <img
             src={props.main_image}
@@ -40,9 +40,8 @@ const Card: FC<ProductType> = (props) => {
             className="w-4/5 group-hover:scale-105 transition-all duration-300"
           />
 
-          {/* ACTION ICONS */}
           <div className="absolute bottom-4 hidden gap-3 group-hover:flex">
-            {/* ADD TO CART */}
+           
             <div
               className={iconStyle}
               onClick={() => dispatch(getData(props))}
@@ -50,7 +49,7 @@ const Card: FC<ProductType> = (props) => {
               <ShoppingCartOutlined />
             </div>
 
-            {/* QUICK VIEW (FULL PAGE) */}
+        
             <div
               className={iconStyle}
               onClick={() => setOpenPreview(true)}
@@ -58,7 +57,7 @@ const Card: FC<ProductType> = (props) => {
               <SearchOutlined />
             </div>
 
-            {/* LIKE */}
+         
             <div className={iconStyle}>
               <HeartFilled />
             </div>

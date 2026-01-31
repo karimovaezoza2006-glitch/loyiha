@@ -1,5 +1,4 @@
-// import { useEffect } from "react";
-// import AOS from "aos";
+
 
 /* social icons */
 import facebook from "../../assets/img/facebook.svg";
@@ -28,10 +27,9 @@ const Footer = () => {
       <div className="max-w-[1400px] mx-auto px-4 py-14">
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
-          data-aos="fade-up"
+        
         >
-          {/* My Account */}
-          <div data-aos="fade-up" data-aos-delay="100">
+          <div >
             <h3 className="font-semibold text-lg mb-4">My Account</h3>
             <ul className="space-y-2 text-gray-600">
               <li className={listStyle}>My Account</li>
@@ -42,8 +40,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Help & Guide */}
-          <div data-aos="fade-up" data-aos-delay="200">
+          
+          <div >
             <h3 className="font-semibold text-lg mb-4">Help & Guide</h3>
             <ul className="space-y-2 text-gray-600">
               <li className={listStyle}>Help Center</li>
@@ -54,8 +52,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
-          <div data-aos="fade-up" data-aos-delay="300">
+    
+          <div>
             <h3 className="font-semibold text-lg mb-4">Categories</h3>
             <ul className="space-y-2 text-gray-600">
               <li className={listStyle}>House Plants</li>
@@ -66,8 +64,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social & Payments */}
-          <div data-aos="fade-up" data-aos-delay="400">
+        
+          <div >
             <h3 className="font-semibold text-lg mb-4">Social Media</h3>
 
             <div className="flex gap-3 mb-6">

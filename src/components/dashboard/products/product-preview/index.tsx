@@ -4,6 +4,8 @@ import {
   HeartOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
+import NewsletterSection from "../../../../pages/home/NewsletterSection";
+import { Footer } from "antd/es/layout/layout";
 
 interface Props {
   open: boolean;
@@ -150,8 +152,13 @@ const ProductPreview: FC<Props> = ({ open, onClose, product }) => {
               Linkedin
             </span>
           </div>
+          
         </div>
+        
       </div>
+<NewsletterSection/>
+<Footer/>
+
     </div>
   );
 };
