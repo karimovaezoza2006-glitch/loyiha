@@ -1,5 +1,7 @@
+// import BlogSectionInfo from "../../components/BlogSection"
 import BlogSectionInfo from "../../components/BlogSection"
-import BlogSection1 from "../../components/BlogSection1"
+import MonetizeSection from "../../components/BlogSection1"
+
 
 import Header from "../../components/header"
 
@@ -8,8 +10,10 @@ const Blog = () => {
   return (
     <div>
       <Header/>
+
+<MonetizeSection/>
 <BlogSectionInfo/>
-<BlogSection1/>
+
     </div>
   )
 }

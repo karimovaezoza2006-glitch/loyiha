@@ -1,10 +1,10 @@
 import React from "react";
-import blogheaderhi2KeX2m from "../assets/img/blog-header-hi2KeX2m.png"
+import blog7 from "../assets/img/blog7.png";
 
 import { setAuthorizationModalVisibility } from "../redux/modal-store";
 import { useReduxDispatch, useReduxSelector } from "../hooks/useRedux";
 
-const BlogSection1: React.FC = () => {
+const MonetizeSection: React.FC = () => {
   const dispatch = useReduxDispatch();
 
  
@@ -23,7 +23,7 @@ const BlogSection1: React.FC = () => {
     <section className="py-5 sm:py-7 bg-white font-sans overflow-hidden">
       <div className="w-[95%] max-w-[1550px] sm:w-[90%] mx-auto">
         <img
-          src={blogheaderhi2KeX2m}
+          src={blog7}
           alt="GreenShop Banner"
           className="w-full h-auto object-cover rounded-[12px] mx-auto"
         />
@@ -52,4 +52,4 @@ const BlogSection1: React.FC = () => {
   );
 };
 
-export default BlogSection1;
+export default MonetizeSection;
