@@ -1,19 +1,25 @@
-// import BlogSectionInfo from "../../components/BlogSection"
-import BlogSectionInfo from "../../components/BlogSection"
-import MonetizeSection from "../../components/BlogSection1"
 
 
-import Header from "../../components/header"
+
+
+import Blogs from '../../components/Blog/blog'
+import Footer from '../../components/footer'
+import Header from '../../components/header'
+//import Shop from '../shop'
 
 
 const Blog = () => {
   return (
     <div>
-      <Header/>
 
-<MonetizeSection/>
-<BlogSectionInfo/>
 
+        <Header />
+  
+
+        <Blogs/>
+
+        <Footer />
+     
     </div>
   )
 }

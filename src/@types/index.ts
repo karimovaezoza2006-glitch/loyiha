@@ -215,7 +215,7 @@ export interface AuthUser {
   profile_photo?: string;
   create_account_limit?: number;
   phone_number?: string;
-  wishlist?: WishListItemType[];
+ 
   username?: string;
   country?: string;
   town?: string;
@@ -230,4 +230,20 @@ export interface AuthUser {
     delete: boolean;
     read: boolean;
   };
+}
+export interface BlogType {
+  _id: string;
+  title: string;
+  description: string;
+  viewCount: number;
+  commentCount: number;
+  likeCount: number;
+  content: string;
+  createdAt?: string;
+}
+
+export interface UserState {
+  isAuthenticated: boolean;
+  name?: string;
+  avatar?: string;
 }

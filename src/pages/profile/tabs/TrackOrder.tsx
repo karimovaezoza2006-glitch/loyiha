@@ -1,112 +1,111 @@
-import { useState } from "react";
-import { Skeleton, Empty } from "antd";
+import { Empty, Skeleton } from "antd";
 import { useQueryHandler } from "../../../hooks/useQuery";
 
 const TrackOrder = () => {
-  const { data, isLoading } = useQueryHandler({
+  const { data, isLoading, isError } = useQueryHandler({
     url: "order/get-order",
-    pathname: "order-get-order",
+    pathname: "track-orders",
   });
 
-  const orders = Array.isArray(data?.data) ? data.data : [];
-  const [openOrderId, setOpenOrderId] = useState<string | null>(null);
+  if (isLoading) {
+    return (
+      <div className="space-y-4">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} active />
+        ))}
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="py-20 text-center text-red-500 font-medium">
+        Buyurtmalarni yuklab bo‘lmadi
+      </div>
+    );
+  }
+
+  const orders = data?.data || [];
 
   return (
     <div className="w-full">
-      <h2 className="text-[20px] font-bold text-[#3D3D3D] mb-6">
+      <h2 className="text-[22px] font-bold text-[#3D3D3D] mb-6">
         Track your Orders
       </h2>
 
-      {isLoading ? (
-        <Skeleton active paragraph={{ rows: 6 }} />
-      ) : orders.length === 0 ? (
-        <Empty description="No orders found" />
-      ) : (
-        <div className="flex flex-col gap-4">
-          {orders.map((order: any) => {
-            const isOpen = openOrderId === order._id;
+      {/* HEADER (desktop) */}
+      <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr] pb-3 border-b border-[#46A358] font-semibold text-[#3D3D3D]">
+        <div>Order Number</div>
+        <div className="text-center">Date</div>
+        <div className="text-center">Total</div>
+        <div className="text-right pr-4">More</div>
+      </div>
 
-            return (
-              <div
-                key={order._id}
-                className="bg-[#F8F8F8] rounded-xl p-5 transition-all"
-              >
-                {/* ===== ORDER ROW ===== */}
-                <div className="grid grid-cols-[2fr_1fr_1fr_1fr] items-center">
-                  <div className="font-medium text-[#3D3D3D] break-all">
-                    {order._id}
-                  </div>
-
-                  <div className="text-center font-medium">
-                    {new Date(order.created_at)
-                      .toISOString()
-                      .slice(0, 10)}
-                  </div>
-
-                  <div className="text-center text-[#46A358] font-bold">
-                    ${order.extra_shop_info.total.toFixed(2)}
-                  </div>
-
-                  <div className="text-right">
-                    <button
-                      onClick={() =>
-                        setOpenOrderId(isOpen ? null : order._id)
-                      }
-                      className="text-[#46A358] font-medium hover:underline"
-                    >
-                      {isOpen ? "Hide info" : "More info"}
-                    </button>
-                  </div>
-                </div>
-
-                {/* ===== ORDER DETAILS ===== */}
-                {isOpen && (
-                  <div className="mt-6 border-t pt-5">
-                    <div className="flex flex-col gap-4">
-                      {order.shop_list.map((item: any) => (
-                        <div
-                          key={item._id}
-                          className="flex gap-4 items-center bg-white rounded-lg p-4"
-                        >
-                          <img
-                            src={item.main_image}
-                            alt={item.title}
-                            className="w-[80px] h-[80px] object-contain bg-[#F5F5F5] rounded"
-                          />
-
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-[#3D3D3D]">
-                              {item.title}
-                            </h4>
-                            <p className="text-[13px] text-gray-500 line-clamp-2">
-                              {item.short_description}
-                            </p>
-                          </div>
-
-                          <div className="text-right">
-                            <p className="font-bold">
-                              ${item.price}
-                            </p>
-                            <p className="text-[13px] text-gray-500">
-                              Qty: {item.count}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-
-                      {/* PAYMENT INFO */}
-                      <div className="text-right text-sm text-gray-500">
-                        Payment method:{" "}
-                        <span className="font-medium text-[#3D3D3D]">
-                          {order.extra_shop_info.method}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+      {/* BODY */}
+      {orders.length > 0 ? (
+        <div className="mt-6 space-y-4">
+          {orders.map((order: any) => (
+            <div
+              key={order._id}
+              className="
+                bg-[#F7F7F7]
+                rounded-xl
+                px-6
+                py-4
+                flex
+                flex-col
+                md:grid
+                md:grid-cols-[2fr_1fr_1fr_1fr]
+                gap-3
+                items-center
+                hover:bg-[#EFEFEF]
+                transition-all
+              "
+            >
+              {/* ORDER ID */}
+              <div className="font-medium text-[#3D3D3D] break-all">
+                <span className="md:hidden text-gray-400 text-xs">Order:</span>
+                {order._id}
               </div>
-            );
-          })}
+
+              {/* DATE */}
+              <div className="md:text-center text-[#000] font-medium">
+                <span className="md:hidden text-gray-400 text-xs">Date:</span>
+                {new Date(order.created_at).toISOString().slice(0, 10)}
+              </div>
+
+              {/* TOTAL */}
+              <div className="md:text-center text-[#46A358] font-bold">
+                <span className="md:hidden text-gray-400 text-xs">Total:</span>
+                ${order.extra_shop_info?.total?.toFixed(2)}
+              </div>
+
+              {/* MORE INFO */}
+              <div className="md:text-right w-full md:w-auto">
+                <button
+                  className="
+                    w-full
+                    md:w-auto
+                    border
+                    border-[#46A358]
+                    text-[#46A358]
+                    px-4
+                    py-1.5
+                    rounded-md
+                    hover:bg-[#46A358]
+                    hover:text-white
+                    transition-all
+                  "
+                >
+                  More info
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="py-20">
+          <Empty description="Buyurtmalar topilmadi" />
         </div>
       )}
     </div>
