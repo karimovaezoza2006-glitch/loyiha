@@ -19,6 +19,7 @@
     "aos": "^2.3.4",
     "axios": "^1.13.2",
     "firebase": "^12.8.0",
+    "framer-motion": "^12.29.2",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.562.0",
     "open-props": "^1.7.17",

@@ -4,6 +4,7 @@ import Blog from "../pages/blog";
 import Profile from "../pages/profile";
 import Shop from "../pages/shop";
 import BlogDetail from "../pages/blog/BlogDetail";
+import CheckoutPage from "../pages/checkout";
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,9 @@ const AppRouter = () => {
         <Route index element={<Profile />} />
         <Route path=":tab" element={<Profile />} />
       </Route>
+
+      {/* CHECKOUT */}
+      <Route path="/proceed-checkout" element={<CheckoutPage />} />
     </Routes>
   );
 };
