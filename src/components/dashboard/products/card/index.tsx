@@ -1,103 +1,78 @@
+
+
 import type { FC } from "react";
-import { useState } from "react";
-import type { ProductType } from "../../../../@types";
 
 import {
+  HeartFilled,
   SearchOutlined,
   ShoppingCartOutlined,
-  HeartFilled,
 } from "@ant-design/icons";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-import { useReduxDispatch } from "../../../../hooks/useRedux";
+import { useReduxDispatch, useReduxSelector } from "../../../../hooks/useRedux";
+import type { ProductType } from "../../../../@types";
 import { getData } from "../../../../redux/shop-slice";
 
-import ProductPreview from "../product-preview";
 
-AOS.init();
 
 const Card: FC<ProductType> = (props) => {
-  const [openPreview, setOpenPreview] = useState(false);
+  const icon_style =
+    "bg-[#FFFFFF] w-[35px] h-[35px] flex rounded-lg justify-center items-center cursor-pointer text-[20px] hover:text-[#46A358] transition-colors";
+  const { data } = useReduxSelector((state) => state.shopSlice);
+  console.log(data);
+  
   const dispatch = useReduxDispatch();
-
-  const iconStyle =
-    "bg-white w-[36px] h-[36px] flex items-center justify-center rounded-lg cursor-pointer text-[18px] hover:bg-[#46A358] hover:text-white transition-all duration-300";
-
   return (
-    <>
- 
-      <div
-        data-aos="fade-up"
-        className="relative bg-white hover:shadow-xl transition-all duration-300"
-      >
-       
-        <div className="group h-[300px] flex items-center justify-center relative overflow-hidden">
-          <img
-            src={props.main_image}
-            alt={props.title}
-            className="w-4/5 group-hover:scale-105 transition-all duration-300"
-          />
+    <div className="relative w-full">
+      <div className="group h-75 bg-[#f5f5f5] flex justify-center items-center relative overflow-hidden rounded-sm">
+        <img
+          src={props.main_image}
+          alt="flowwer"
+          className="w-full h-full max-sm:h-full object-contain"
+        />
 
-          <div className="absolute bottom-4 hidden gap-3 group-hover:flex">
-           
-            <div
-              className={iconStyle}
-              onClick={() => dispatch(getData(props))}
-            >
-              <ShoppingCartOutlined />
-            </div>
-
-        
-            <div
-              className={iconStyle}
-              onClick={() => setOpenPreview(true)}
-            >
-              <SearchOutlined />
-            </div>
-
-         
-            <div className={iconStyle}>
-              <HeartFilled />
-            </div>
+        <div className="hidden gap-3 justify-center inset-x-auto absolute bottom-5 items-center group-hover:flex animate-in fade-in slide-in-from-bottom-2">
+          <div
+          onClick={() => dispatch(getData({ 
+  ...props, 
+  counter: 1, 
+  userPrice: props.userPrice ?? props.price 
+}))}
+            className={`${icon_style}`}
+          >
+            <ShoppingCartOutlined />
+          </div>
+          <div className={`${icon_style}`}>
+            <HeartFilled className="" />
+          </div>
+          <div className={`${icon_style}`}>
+            <SearchOutlined />
           </div>
         </div>
 
-        {/* INFO */}
-        <div className="pt-3 px-1">
-          <h3 className="text-[#3D3D3D] text-[16px] font-medium">
-            {props.title}
-          </h3>
-
-          <div className="flex items-center gap-3 mt-1">
-            <span className="text-[#46A358] text-[18px] font-bold">
-              ${props.price}
-            </span>
-
-            {props.discount && (
-              <span className="text-[#A5A5A5] line-through text-[14px]">
-                ${props.discount_price}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* DISCOUNT BADGE */}
         {props.discount && (
-          <span className="absolute top-4 left-0 bg-[#46A358] text-white px-2 py-1 text-[12px] font-bold">
-            SALE
-          </span>
+          <div className="bg-[#46A358] text-white absolute top-4 left-0 px-2.5 py-0.75 text-sm font-medium">
+            13% OFF
+          </div>
         )}
       </div>
 
-      {/* FULL PAGE PRODUCT PREVIEW */}
-      <ProductPreview
-        open={openPreview}
-        onClose={() => setOpenPreview(false)}
-        product={props}
-      />
-    </>
+      <div className="mt-2">
+        <h3 className="text-[#46a358] text-[16px] font-medium pt-2.5 pb-0.5">
+          {props.title}
+        </h3>
+
+        <div className="flex items-center gap-3">
+          <h1 className="text-[#46A358] text-[18px] font-bold">
+            {props.price}$
+          </h1>
+
+          {props.discount && props.discount_price && (
+            <h1 className="font-light text-[#A5A5A5] line-through text-[16px]">
+              {props.discount_price}$
+            </h1>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
