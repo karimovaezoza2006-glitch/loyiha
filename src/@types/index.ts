@@ -120,3 +120,114 @@ export interface ShopCartType extends ProductType {
   counter: number;
   userPrice: number;
 }
+export type UploadType = {
+  file: {
+    lastModified: number;
+    lastModifiedDate: Date;
+    name: string;
+    originalFileObj: typeof File;
+    response: {
+      message: string;
+      image_url: {
+        api_key: string;
+        asset_id: string;
+        bytes: number;
+        created_at: string;
+        etag: string;
+        folder: string;
+        format:
+          | "jpg"
+          | "svg"
+          | "jpag"
+          | "jpeg"
+          | "gif"
+          | "png"
+          | "eps"
+          | "raw"
+          | "cr2"
+          | "nef"
+          | "orf"
+          | "sr2";
+        height: number;
+        width: number;
+        original_extension: string;
+        original_filename: string;
+        placeholder: boolean;
+        public_id: string;
+        resource_type: "image" | "video" | "images" | "videos";
+        secure_url: string;
+        signature: string;
+        tags: string[];
+        type: "upload" | "pre-upload";
+        url: string;
+        version: number;
+        version_id: string;
+      };
+    };
+    size: number;
+    percent: number;
+    status: "done" | "failed";
+    thumbUrl: string;
+    type: string;
+    uid: string;
+    xhr: typeof XMLHttpRequest;
+  };
+};
+export interface UserType {
+  billing_address: {
+    country?: string;
+    town?: string;
+    street_address?: string;
+    additional_street_address?: string;
+    state?: string;
+    zip?: string;
+  };
+  create_account_limit: number;
+  create_plant_limit: number;
+  create_post_limit: number;
+  created_at: string;
+  created_by: string;
+  email: string;
+  followers: string[];
+  hashtags: string[];
+  name: string;
+  order_list: string[];
+  password: string;
+  permission: {
+    create: boolean;
+    update: boolean;
+    delete: boolean;
+    read: boolean;
+  };
+  phone_number: string;
+  profile_photo: string;
+  surname: string;
+  user_type: string;
+  username: string;
+  wishlist: string[];
+  _id: string;
+}
+export interface AuthUser {
+  _id?: string;
+  email?: string;
+  name?: string;
+  surname?: string;
+  profile_photo?: string;
+  create_account_limit?: number;
+  phone_number?: string;
+  wishlist?: WishListItemType[];
+  username?: string;
+  country?: string;
+  town?: string;
+  street_address?: string;
+  additional_street_address?: string;
+  state?: string;
+  zip?: string;
+  followers?: string[];
+  permission?: {
+    create: boolean;
+    update: boolean;
+    delete: boolean;
+    read: boolean;
+  };
+}

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Modal, message } from "antd";
 import ProfileSidebar from "./ProfileSidebar";
@@ -11,8 +11,7 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import NewsletterSection from "../home/NewsletterSection";
 const Profile = () => {
-  const { tab } = useParams();
-  const activeTab = tab || "account-details";
+  
   const dispatch = useReduxDispatch();
   const navigate = useNavigate();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -30,8 +29,8 @@ const Profile = () => {
    
       <div className="w-full max-w-[1400px] px-4 flex flex-col md:flex-row gap-10">
         <ProfileSidebar
-          activeTab={activeTab}
-          onLogout={() => setShowLogoutModal(true)}
+        
+        
         />
 
      
